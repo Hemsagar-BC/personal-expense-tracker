@@ -1,12 +1,12 @@
 {
-  "name": "Kharcha",
-  "short_name": "Kharcha",
+  "name": "Expense Tracker",
+  "short_name": "Expense Tracker",
   "description": "Track your big spending, simply.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#10b981",
   "icons": [
-    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "/icons/icon.webp", "sizes": "any", "type": "image/webp" }
   ]
 }
