@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      strategies: 'injectManifest',
-      injectManifest: {
-        globPatterns: ['**/*.{js,css,html,svg,png}']
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,json}']
       },
       manifest: {
         name: 'Kharcha - Expense Tracker',
@@ -26,9 +26,6 @@ export default defineConfig({
             type: 'image/svg+xml'
           }
         ],
-      },
-      workbox: {
-        cleanupOutdatedCaches: true
       }
     }),
   ],
