@@ -5,6 +5,26 @@ import BillUpload from "../components/Expense/BillUpload";
 import { useExpenses } from "../hooks/useExpenses";
 import { uploadBill } from "../utils/uploadBill";
 
+const formatAmountDisplay = (value) => {
+  // Remove all commas and non-digit characters
+  const numericOnly = value.replace(/[^\d]/g, "");
+  
+  // Format with Indian commas (1,00,000 style)
+  if (!numericOnly) return "";
+  
+  const parts = numericOnly.split("").reverse();
+  const result = [];
+  
+  for (let i = 0; i < parts.length; i++) {
+    if (i === 3 || i === 5 || i === 7 || i === 9) {
+      result.push(",");
+    }
+    result.push(parts[i]);
+  }
+  
+  return result.reverse().join("");
+};
+
 const AddExpense = () => {
   const navigate = useNavigate();
   const { addExpense } = useExpenses();
@@ -14,6 +34,11 @@ const AddExpense = () => {
   const [amount, setAmount] = useState("");
   const [billFile, setBillFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleAmountChange = (event) => {
+    const input = event.target.value;
+    setAmount(formatAmountDisplay(input));
+  };
 
   const getTempId = () => {
     if (typeof crypto !== "undefined" && crypto.randomUUID) {
@@ -31,8 +56,8 @@ const AddExpense = () => {
       return;
     }
 
-    const numericAmount = Number(amount);
-    if (!Number.isFinite(numericAmount)) {
+    const numericAmount = Number(amount.replace(/[^\d]/g, ""));
+    if (!Number.isFinite(numericAmount) || numericAmount === 0) {
       toast.error("Enter a valid amount.");
       return;
     }
@@ -108,12 +133,13 @@ const AddExpense = () => {
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-900">Amount (₹)</label>
             <input
-              type="number"
+              type="text"
               value={amount}
-              onChange={(event) => setAmount(event.target.value)}
+              onChange={handleAmountChange}
               required
               className="w-full rounded-xl border border-orange-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none"
               placeholder="0"
+              inputMode="numeric"
             />
           </div>
         </div>

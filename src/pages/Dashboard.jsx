@@ -8,6 +8,26 @@ import RecentExpenses from "../components/Dashboard/RecentExpenses";
 import FAB from "../components/UI/FAB";
 import Loader from "../components/UI/Loader";
 
+const formatAmountDisplay = (value) => {
+  // Remove all commas and non-digit characters
+  const numericOnly = value.replace(/[^\d]/g, "");
+  
+  // Format with Indian commas (1,00,000 style)
+  if (!numericOnly) return "";
+  
+  const parts = numericOnly.split("").reverse();
+  const result = [];
+  
+  for (let i = 0; i < parts.length; i++) {
+    if (i === 3 || i === 5 || i === 7 || i === 9) {
+      result.push(",");
+    }
+    result.push(parts[i]);
+  }
+  
+  return result.reverse().join("");
+};
+
 const Dashboard = () => {
   const { totalBudget, updateBudget, loading: budgetLoading } = useBudget();
   const { expenses, loading: expensesLoading } = useExpenses();
@@ -27,15 +47,20 @@ const Dashboard = () => {
   const remaining = (Number(totalBudget) || 0) - totalSpent;
   const isLoading = budgetLoading || expensesLoading;
 
+  const handleBudgetChange = (event) => {
+    const input = event.target.value;
+    setDraftBudget(formatAmountDisplay(input));
+  };
+
   const handleSaveBudget = async () => {
-    const value = Number(draftBudget);
-    if (!Number.isFinite(value)) {
+    const numericValue = Number(draftBudget.replace(/[^\d]/g, ""));
+    if (!Number.isFinite(numericValue) || numericValue === 0) {
       toast.error("Enter a valid budget amount.");
       return;
     }
 
     try {
-      await updateBudget(value);
+      await updateBudget(numericValue);
       toast.success("Budget updated!");
       setIsEditing(false);
     } catch (error) {
@@ -67,11 +92,12 @@ const Dashboard = () => {
         {isEditing ? (
           <div className="flex items-center gap-2">
             <input
-              type="number"
+              type="text"
               value={draftBudget}
-              onChange={(event) => setDraftBudget(event.target.value)}
+              onChange={handleBudgetChange}
               className="w-full rounded-xl border border-orange-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-orange-400 focus:outline-none"
               placeholder="Enter budget"
+              inputMode="numeric"
             />
             <button
               type="button"
