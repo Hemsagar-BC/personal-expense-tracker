@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kharcha icon">
+  <rect width="512" height="512" rx="120" fill="#f97316"/>
+  <circle cx="256" cy="256" r="156" fill="#ffffff"/>
+  <path d="M220 164h44l44 72h48l-52 80 60 104h-52l-36-68-36 68h-52l60-104-52-80h48z" fill="#0f172a"/>
+</svg>
