@@ -50,16 +50,16 @@ const BillUpload = ({ onFileSelect }) => {
   };
 
   return (
-    <div className="rounded-2xl border border-dashed border-orange-200 bg-orange-50 p-4 text-slate-700">
-      <label className="flex cursor-pointer flex-col items-center gap-2 text-center">
+    <div className="rounded-2xl border border-dashed border-orange-200 bg-orange-50 p-8 text-slate-700">
+      <label className="flex cursor-pointer flex-col items-center gap-4 text-center">
         <input
           type="file"
           accept="image/jpeg,image/png,application/pdf"
           className="hidden"
           onChange={handleChange}
         />
-        <span className="rounded-full bg-orange-100 p-3 text-orange-600">
-          <svg viewBox="0 0 24 24" className="h-5 w-5">
+        <span className="rounded-full bg-orange-100 p-6 text-orange-600">
+          <svg viewBox="0 0 24 24" className="h-9 w-9">
             <path
               d="M12 5v14M5 12h14"
               stroke="currentColor"
@@ -68,22 +68,22 @@ const BillUpload = ({ onFileSelect }) => {
             />
           </svg>
         </span>
-        <span className="text-sm font-medium">Upload bill</span>
-        <span className="text-xs text-slate-500">JPG, PNG, or PDF</span>
+        <span className="text-lg font-semibold">Upload bill</span>
+        <span className="text-base text-slate-500">JPG, PNG, or PDF</span>
       </label>
 
       {fileType === "image" && previewUrl ? (
-        <div className="mt-4 overflow-hidden rounded-xl border border-orange-100">
+        <div className="mt-6 overflow-hidden rounded-xl border border-orange-100">
           <img
             src={previewUrl}
             alt={fileName || "Bill preview"}
-            className="h-40 w-full object-cover"
+            className="h-64 w-full object-cover"
           />
         </div>
       ) : null}
 
       {fileType === "pdf" && fileName ? (
-        <p className="mt-4 text-sm text-slate-600">{fileName}</p>
+        <p className="mt-6 text-lg text-slate-600">{fileName}</p>
       ) : null}
     </div>
   );

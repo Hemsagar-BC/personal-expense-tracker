@@ -11,17 +11,17 @@ const SpendingBar = ({ totalBudget, totalSpent }) => {
   return (
     <div className="rounded-2xl border border-orange-100 bg-white p-4 text-slate-900">
       <div className="space-y-2">
-        <div className="flex items-center justify-between text-base font-medium text-slate-900">
+        <div className="flex items-center justify-between text-sm font-medium text-slate-900">
           <span>
             {formatCurrency(spentValue)} spent of {formatCurrency(budgetValue)}
           </span>
-          <span>{Math.round(percent)}%</span>
+          <span className="text-xs">{Math.round(percent)}%</span>
         </div>
-        <p className="text-sm font-medium text-slate-900">
+        <p className="text-xs font-medium text-slate-900">
           {convertNumberToWords(spentValue)} of {convertNumberToWords(budgetValue)}
         </p>
       </div>
-      <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-orange-100">
+      <div className="mt-3 h-2.5 w-full overflow-hidden rounded-full bg-orange-100">
         <div
           className={`h-full rounded-full transition-all bg-orange-500`}
           style={{ width: `${percent}%` }}

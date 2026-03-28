@@ -71,14 +71,14 @@ const History = () => {
   }
 
   return (
-    <div className="space-y-4 px-4 pb-24 pt-4">
-      <div className="space-y-3 rounded-2xl border border-orange-100 bg-white p-4 text-slate-900">
+    <div className="space-y-3 px-3 pb-24 pt-3">
+      <div className="space-y-2 rounded-2xl border border-orange-100 bg-white p-3 text-slate-900">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-500">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-500">
             History
           </h2>
           <div className="flex flex-col items-end gap-1">
-            <span className="text-xl font-semibold">
+            <span className="text-lg font-semibold">
               {formatCurrency(totalFiltered)}
             </span>
             <span className="text-xs text-slate-500">
@@ -89,8 +89,7 @@ const History = () => {
         <FilterTabs active={activeFilter} onChange={setActiveFilter} />
       </div>
 
-      <div className="space-y-3">
-        {filteredExpenses.length === 0 ? (
+      <div className="space-y-2">{filteredExpenses.length === 0 ? (
           <EmptyState />
         ) : (
           filteredExpenses.map((expense) => (

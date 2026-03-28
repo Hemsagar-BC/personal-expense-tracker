@@ -74,23 +74,23 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="relative space-y-6 px-4 pb-24 pt-4">
+    <div className="relative space-y-4 px-4 pb-24 pt-5">
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-600">
+          <p className="text-sm font-semibold uppercase tracking-widest text-slate-600">
             Total Budget
           </p>
           <button
             type="button"
             onClick={() => setIsEditing((prev) => !prev)}
-            className="rounded-lg border border-orange-200 bg-white px-2 py-1 text-xs font-semibold text-slate-600 hover:border-orange-300 hover:text-orange-600"
+            className="rounded-lg border border-orange-200 bg-white px-2 py-1.5 text-xs font-semibold text-slate-600 hover:border-orange-300 hover:text-orange-600"
           >
             {isEditing ? "Cancel" : "Edit"}
           </button>
         </div>
         <BudgetCard label="Total Budget" amount={totalBudget} type="budget" />
         {isEditing ? (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <input
               type="text"
               value={draftBudget}
@@ -102,7 +102,7 @@ const Dashboard = () => {
             <button
               type="button"
               onClick={handleSaveBudget}
-              className="rounded-xl bg-orange-500 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-400"
+              className="rounded-xl bg-orange-500 px-4 py-2 text-xs font-semibold text-white hover:bg-orange-400"
             >
               Save
             </button>

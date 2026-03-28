@@ -91,68 +91,68 @@ const AddExpense = () => {
   };
 
   return (
-    <div className="px-4 pb-24 pt-4">
+    <div className="px-6 pb-24 pt-8">
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 rounded-2xl border border-orange-100 bg-white p-4 text-slate-900"
+        className="space-y-8 rounded-2xl border border-orange-100 bg-white p-8 text-slate-900"
       >
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-slate-900">Where (optional)</label>
+        <div className="space-y-4">
+          <label className="text-lg font-semibold text-slate-900">Where (optional)</label>
           <input
             type="text"
             value={place}
             onChange={(event) => setPlace(event.target.value)}
-            className="w-full rounded-xl border border-orange-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none"
+            className="w-full rounded-xl border border-orange-200 bg-white px-5 py-4 text-lg focus:border-orange-400 focus:outline-none"
             placeholder="Place"
           />
         </div>
 
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-slate-900">What For</label>
+        <div className="space-y-4">
+          <label className="text-lg font-semibold text-slate-900">What For</label>
           <input
             type="text"
             value={purpose}
             onChange={(event) => setPurpose(event.target.value)}
             required
-            className="w-full rounded-xl border border-orange-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none"
+            className="w-full rounded-xl border border-orange-200 bg-white px-5 py-4 text-lg focus:border-orange-400 focus:outline-none"
             placeholder="Purpose"
           />
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-900">Date</label>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div className="space-y-4">
+            <label className="text-lg font-semibold text-slate-900">Date</label>
             <input
               type="date"
               value={date}
               onChange={(event) => setDate(event.target.value)}
               required
-              className="w-full rounded-xl border border-orange-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none"
+              className="w-full rounded-xl border border-orange-200 bg-white px-5 py-4 text-lg focus:border-orange-400 focus:outline-none"
             />
           </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-900">Amount (₹)</label>
+          <div className="space-y-4">
+            <label className="text-lg font-semibold text-slate-900">Amount (₹)</label>
             <input
               type="text"
               value={amount}
               onChange={handleAmountChange}
               required
-              className="w-full rounded-xl border border-orange-200 bg-white px-3 py-2 text-sm focus:border-orange-400 focus:outline-none"
+              className="w-full rounded-xl border border-orange-200 bg-white px-5 py-4 text-lg focus:border-orange-400 focus:outline-none"
               placeholder="0"
               inputMode="numeric"
             />
           </div>
         </div>
 
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-slate-900">Bill Upload (optional)</label>
+        <div className="space-y-4">
+          <label className="text-lg font-semibold text-slate-900">Bill Upload (optional)</label>
           <BillUpload onFileSelect={setBillFile} />
         </div>
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full rounded-xl bg-orange-500 px-4 py-3 text-sm font-semibold text-white transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-70"
+          className="w-full rounded-xl bg-orange-500 px-8 py-5 text-lg font-bold text-white transition hover:bg-orange-400 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {isSubmitting ? "Saving..." : "Add Expense"}
         </button>

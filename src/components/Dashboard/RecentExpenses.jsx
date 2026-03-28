@@ -9,7 +9,7 @@ const RecentExpenses = ({ expenses }) => {
   return (
     <section className="rounded-2xl border border-orange-100 bg-white p-4 text-slate-900">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-500">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-slate-500">
           Recent Expenses
         </h2>
         <Link
@@ -22,26 +22,26 @@ const RecentExpenses = ({ expenses }) => {
 
       <div className="mt-4 space-y-3">
         {items.length === 0 ? (
-          <p className="text-sm text-slate-500">No recent expenses.</p>
+          <p className="text-xs text-slate-500">No recent expenses.</p>
         ) : (
           items.map((expense) => (
             <div
               key={expense.id}
-              className="flex items-center justify-between rounded-xl bg-orange-50 px-3 py-2"
+              className="flex items-center justify-between rounded-xl bg-orange-50 px-3 py-2.5"
             >
               <div>
-                <p className="text-base font-semibold text-slate-900">
+                <p className="text-sm font-semibold text-slate-900">
                   {expense.place}
                 </p>
-                <p className="text-sm font-medium text-slate-900">
+                <p className="text-xs font-medium text-slate-900">
                   {expense.purpose} • {formatDate(expense.date)}
                 </p>
               </div>
               <div className="flex flex-col items-end gap-1">
-                <div className="flex items-center gap-2 text-2xl font-semibold text-slate-900">
+                <div className="flex items-center gap-1 text-2xl font-semibold text-slate-900">
                   {expense.billURL ? (
                     <span className="text-orange-500" title="Bill attached">
-                      <svg viewBox="0 0 24 24" className="h-4 w-4">
+                      <svg viewBox="0 0 24 24" className="h-7 w-7">
                         <path
                           d="M6 3h9l3 3v15H6z"
                           stroke="currentColor"
@@ -59,7 +59,7 @@ const RecentExpenses = ({ expenses }) => {
                   ) : null}
                   <span>{formatCurrency(expense.amount)}</span>
                 </div>
-                <span className="text-sm font-medium text-slate-900">
+                <span className="text-xs font-medium text-slate-900">
                   {convertNumberToWords(expense.amount)}
                 </span>
               </div>

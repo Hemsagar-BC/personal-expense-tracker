@@ -14,7 +14,7 @@ const FilterTabs = ({ active, onChange }) => {
             key={tab.key}
             type="button"
             onClick={() => onChange?.(tab.key)}
-            className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+            className={`rounded-lg px-3 py-2 text-xs font-semibold transition ${
               isActive
                 ? "bg-orange-500 text-white"
                 : "text-slate-500 hover:text-orange-600"

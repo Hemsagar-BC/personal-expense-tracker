@@ -55,7 +55,7 @@ const BudgetCard = ({ label, amount, type }) => {
       : "border-emerald-200 bg-emerald-50 text-emerald-700";
 
   const baseClass =
-    "rounded-2xl border px-4 py-4 shadow-sm backdrop-blur";
+    "rounded-2xl border px-5 py-5 shadow-sm backdrop-blur";
   const neutralClass = "border-orange-100 bg-white text-slate-900";
 
   return (
@@ -70,7 +70,7 @@ const BudgetCard = ({ label, amount, type }) => {
         <p className="text-4xl font-semibold text-slate-900">
           {formatCurrency(value)}
         </p>
-        <p className="mt-1 text-sm font-medium text-slate-900">
+        <p className="mt-1.5 text-xs font-medium text-slate-900">
           {convertNumberToWords(value)}
         </p>
       </div>
