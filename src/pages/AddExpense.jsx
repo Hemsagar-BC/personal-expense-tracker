@@ -28,7 +28,6 @@ const formatAmountDisplay = (value) => {
 const AddExpense = () => {
   const navigate = useNavigate();
   const { addExpense } = useExpenses();
-  const [place, setPlace] = useState("");
   const [purpose, setPurpose] = useState("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [amount, setAmount] = useState("");
@@ -73,7 +72,6 @@ const AddExpense = () => {
       }
 
       await addExpense({
-        place: place.trim(),
         purpose: purpose.trim(),
         date,
         amount: numericAmount,
@@ -96,17 +94,6 @@ const AddExpense = () => {
         onSubmit={handleSubmit}
         className="space-y-8 rounded-2xl border border-orange-100 bg-white p-8 text-slate-900"
       >
-        <div className="space-y-4">
-          <label className="text-lg font-semibold text-slate-900">Where (optional)</label>
-          <input
-            type="text"
-            value={place}
-            onChange={(event) => setPlace(event.target.value)}
-            className="w-full rounded-xl border border-orange-200 bg-white px-5 py-4 text-lg focus:border-orange-400 focus:outline-none"
-            placeholder="Place"
-          />
-        </div>
-
         <div className="space-y-4">
           <label className="text-lg font-semibold text-slate-900">What For</label>
           <input
